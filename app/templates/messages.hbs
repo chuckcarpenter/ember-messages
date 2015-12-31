@@ -1,0 +1,19 @@
+<div class="messages">
+  {{#each model as |message|}}
+  <div class="message" id={{message.id}}>
+      <img class="message__avatar" src="{{message.pic}}" alt="" >
+      <div class="message__content">
+        <p class="message__content--text">{{message.message}}</p>
+        <p class="message__content--username">{{message.formattedName}}</p>
+
+        <div class="m-t-md">
+          <span>{{message.useragent}}</span>
+        </div>
+
+        <span class="message__content--date">{{message.formattedDate}}</span>
+      </div>
+  </div>
+  {{/each}}
+</div>
+
+{{outlet}}
