@@ -13,7 +13,14 @@ export default DS.Model.extend({
   useragent: DS.attr(),
   username: DS.attr(),
   formattedName: function() {
+    // this formatting is fragile but there's no guarantee that a name field
+    // is actually a normal name outside of an arbitrary usernam
     let name = this.get( 'username' );
+
+    if ( /\d/.test( name ) ) {
+      name = name.replace(/[0-9]/g, '');
+    }
+
     name = name.split('.');
 
     return name = name.join(' ');
